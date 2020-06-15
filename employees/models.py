@@ -11,8 +11,6 @@ class BaseEntity(models.Model):
 class Designation(BaseEntity):
     designation_name = models.CharField(max_length=100,unique=True)
     isauthorised = models.CharField(max_length=10)
-
-    updated_at = models.DateTimeField(auto_now_add=True)
     objects = models.Manager()
 
     def __str__(self):

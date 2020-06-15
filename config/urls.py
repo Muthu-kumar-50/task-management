@@ -24,8 +24,10 @@ router.register('department',views.DepartmentViewset)
 router.register('designation',views.DesignationViewset)
 router.register('zonal',views.ZonalViewset)
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/',include(router.urls))
+    path('api/',include(router.urls)),
+
 ]
 

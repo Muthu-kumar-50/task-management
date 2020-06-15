@@ -4,27 +4,23 @@ from employees.models import Department,Designation,Zonal,Employee
 class DesignationSerializer(serializers.ModelSerializer):
     class Meta:
         model = Designation
-        fields = ['id','designation_name','isauthorised']
+        fields = '__all__'
 
 class DepartmentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Department
-        fields = ['id','department_name']
+        fields = '__all__'
 
 
 
 class ZonalSerializer(serializers.ModelSerializer):
     class Meta:
         model = Zonal
-        fields = ['id','zonal_name']
+        fields = '__all__'
 
 
 class EmployeeSerializer(serializers.ModelSerializer):
-    designation = DesignationSerializer()
-    department = DepartmentSerializer()
-    zone     = ZonalSerializer()
-    
-
+   
     class Meta:
         model = Employee
-        fields = ['id','username','name','password','designation','department','zone']
+        fields = '__all__'
