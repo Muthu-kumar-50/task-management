@@ -19,7 +19,7 @@ from rest_framework.routers import DefaultRouter
 from employees import views
 
 router = DefaultRouter()
-router.register('employees',views.EmployeeViewset)
+router.register('employees',views.EmployeeViewset, basename="employee")
 router.register('department',views.DepartmentViewset)
 router.register('designation',views.DesignationViewset)
 router.register('zonal',views.ZonalViewset)

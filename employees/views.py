@@ -1,7 +1,8 @@
 from django.shortcuts import render
 from rest_framework import viewsets, generics, mixins
 from employees.models import Department,Designation,Zonal,Employee
-from employees.serializer import EmployeeSerializer,DepartmentSerializer,DesignationSerializer,ZonalSerializer
+from employees.serializer import (EmployeeSerializerPost,EmployeeSerializerGet,DepartmentSerializer,
+	DesignationSerializer,ZonalSerializer)
 
 
 # Create your views here.
@@ -18,6 +19,11 @@ class ZonalViewset(viewsets.ModelViewSet):
     serializer_class = ZonalSerializer
 
 class EmployeeViewset(viewsets.ModelViewSet):
-    queryset = Employee.objects.all()
-    serializer_class = EmployeeSerializer
 
+    def get_serializer_class(self):
+        if self.request.method == 'POST':
+            return EmployeeSerializerPost
+        return EmployeeSerializerGet
+
+    def get_queryset(self):
+    	return Employee.objects.all()
