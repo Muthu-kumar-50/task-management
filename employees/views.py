@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from rest_framework import viewsets
+from rest_framework import viewsets, generics, mixins
 from employees.models import Department,Designation,Zonal,Employee
 from employees.serializer import EmployeeSerializer,DepartmentSerializer,DesignationSerializer,ZonalSerializer
 
@@ -20,3 +20,4 @@ class ZonalViewset(viewsets.ModelViewSet):
 class EmployeeViewset(viewsets.ModelViewSet):
     queryset = Employee.objects.all()
     serializer_class = EmployeeSerializer
+
