@@ -19,8 +19,16 @@ class ZonalSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class EmployeeSerializer(serializers.ModelSerializer):
-   
+class EmployeeSerializerPost(serializers.ModelSerializer):
+    
     class Meta:
         model = Employee
         fields = '__all__'
+
+class EmployeeSerializerGet(serializers.ModelSerializer):
+    designation = DesignationSerializer(read_only=True)
+    department = DepartmentSerializer(read_only=True)
+    zone  = ZonalSerializer(read_only=True)
+    class Meta:
+        model = Employee
+        fields = ['id','username','name','password','designation','department','zone']
